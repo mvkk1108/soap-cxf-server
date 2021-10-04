@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="EmployeeServiceService" targetNamespace="http://service.models.ems.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://service.models.ems.com/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+    <schema xmlns="http://www.w3.org/2001/XMLSchema">
+<import namespace="http://service.models.ems.com/" schemaLocation="employeeservice_schema1.xsd"/>
+</schema>
+  </wsdl:types>
+  <wsdl:message name="getEmployeeResponse">
+    <wsdl:part name="parameters" element="tns:getEmployeeResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getEmployee">
+    <wsdl:part name="parameters" element="tns:getEmployee">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="EmployeeService">
+    <wsdl:operation name="getEmployee">
+      <wsdl:input name="getEmployee" message="tns:getEmployee">
+    </wsdl:input>
+      <wsdl:output name="getEmployeeResponse" message="tns:getEmployeeResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="EmployeeServiceServiceSoapBinding" type="tns:EmployeeService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getEmployee">
+      <soap:operation soapAction="urn:GetEmployee" style="document"/>
+      <wsdl:input name="getEmployee">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getEmployeeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="EmployeeServiceService">
+    <wsdl:port name="EmployeeServicePort" binding="tns:EmployeeServiceServiceSoapBinding">
+      <soap:address location="http://localhost:8081/ems/services/EmployeeServicePort"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

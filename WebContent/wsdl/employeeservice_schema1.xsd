@@ -1,0 +1,24 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://service.models.ems.com/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://service.models.ems.com/">
+<xs:complexType name="employee">
+<xs:sequence>
+<xs:element minOccurs="0" name="dateofjoin" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="email" type="xs:string"/>
+<xs:element minOccurs="0" name="empname" type="xs:string"/>
+<xs:element name="empno" type="xs:int"/>
+<xs:element minOccurs="0" name="mobile" type="xs:string"/>
+<xs:element name="salary" type="xs:double"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="getEmployee" type="getEmployee"/>
+<xs:complexType name="getEmployee">
+<xs:sequence>
+<xs:element name="arg0" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="getEmployeeResponse" type="getEmployeeResponse"/>
+<xs:complexType name="getEmployeeResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="employee"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
